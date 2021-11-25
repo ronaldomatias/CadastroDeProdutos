@@ -1,6 +1,5 @@
 ﻿using ProjetoCadastro.Controller;
 using ProjetoCadastro.DAO;
-using ProjetoCadastro.View;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,11 +18,16 @@ namespace ProjetoCadastro
 
         public Form1()
         {
+            this.controlador = new Controlador(this);
             InitializeComponent();
-            controlador = new Controlador(this);
         }
 
-        //melhorar o visual da tela
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            controlador.carregarTabelaProdutos();
+        }
+
         private void btnInserir_Click(object sender, EventArgs e)
         {
             controlador.inserirNovoProduto();
@@ -44,17 +48,39 @@ namespace ProjetoCadastro
             controlador.pesquisarProdutoPorId();
         }
 
-        private void btnTabela_Click(object sender, EventArgs e)
+        
+
+
+
+        
+
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TelaListaProdutos telaProdutos = new TelaListaProdutos();
-            controlador.pesquisarTodosOsProdutos(telaProdutos);
-            telaProdutos.Show();
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08 && e.KeyChar != 44)
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
+        }
+        private void txtPesquisar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            {
+                e.Handled = true;
+            }
         }
 
 
-
-
-
+        public DataGridView getDtGrid()
+        {
+            return dataGridView1;
+        }
 
         public String getTxtId()
         {
@@ -86,26 +112,6 @@ namespace ProjetoCadastro
             txtValor.Text = v;
         }
 
-        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08 && e.KeyChar != 44)
-            {
-                e.Handled = true;
-            }
-        }
-        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
-            {
-                e.Handled = true;
-            }
-        }
-        private void txtPesquisar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
-            {
-                e.Handled = true;
-            }
-        }
+        
     }
 }

@@ -1,5 +1,4 @@
 ﻿using ProjetoCadastro.DAO;
-using ProjetoCadastro.View;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,15 +12,14 @@ namespace ProjetoCadastro.Controller
     public class Controlador
     {
         private Form1 telaPrincipal;
-        private TelaListaProdutos telaProdutos;
 
         public Controlador(Form1 form1)
         {
             this.telaPrincipal = form1;
-            telaProdutos = new TelaListaProdutos();
         }
         
 
+        //implementar uma busca através do nome
 
         public void inserirNovoProduto()
         {   
@@ -113,13 +111,11 @@ namespace ProjetoCadastro.Controller
             }
         }
 
-        public void pesquisarTodosOsProdutos(TelaListaProdutos telaProdutos)
+        public void carregarTabelaProdutos()
         {
-            this.telaProdutos = telaProdutos;
             ProdutoDAO dao = new ProdutoDAO();
             DataTable dt = new DataTable();
-            dt = dao.pesquisarTodosOsProdutos();
-            telaProdutos.getDataGridView().DataSource = dt;
+            telaPrincipal.getDtGrid().DataSource = dao.pesquisarTodosOsProdutos();
         }
 
 
@@ -130,7 +126,7 @@ namespace ProjetoCadastro.Controller
         {
             if (resultadoDaOperação == 1)
             {
-                pesquisarTodosOsProdutos(telaProdutos);
+                carregarTabelaProdutos();
 
                 return MessageBox.Show("Inserido com sucesso!");
             }
@@ -143,7 +139,7 @@ namespace ProjetoCadastro.Controller
         {
             if (resultadoDaOperação == 1)
             {
-                pesquisarTodosOsProdutos(telaProdutos);
+                carregarTabelaProdutos();
 
                 return MessageBox.Show("Produto excluido com sucesso!");
             }
@@ -156,7 +152,7 @@ namespace ProjetoCadastro.Controller
         {
             if (resultadoDaOperação == 1)
             {
-                pesquisarTodosOsProdutos(telaProdutos);
+                carregarTabelaProdutos();
 
                 return MessageBox.Show("Produto alterado com sucesso!");
             }

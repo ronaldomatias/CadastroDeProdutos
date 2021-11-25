@@ -38,4 +38,3 @@ C:\Users\ronal\OneDrive\Documentos\Project VS\ProjetoCadastro\ProjetoCadastro\Pr
 C:\Users\ronal\OneDrive\Documentos\Project VS\ProjetoCadastro\ProjetoCadastro\ProjetoCadastro\obj\Debug\ProjetoCadastro.csproj.CopyComplete
 C:\Users\ronal\OneDrive\Documentos\Project VS\ProjetoCadastro\ProjetoCadastro\ProjetoCadastro\obj\Debug\ProjetoCadastro.exe
 C:\Users\ronal\OneDrive\Documentos\Project VS\ProjetoCadastro\ProjetoCadastro\ProjetoCadastro\obj\Debug\ProjetoCadastro.pdb
-C:\Users\ronal\OneDrive\Documentos\Project VS\ProjetoCadastro\ProjetoCadastro\ProjetoCadastro\obj\Debug\ProjetoCadastro.View.TelaListaProdutos.resources
