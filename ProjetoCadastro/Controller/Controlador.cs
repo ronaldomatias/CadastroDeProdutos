@@ -12,6 +12,8 @@ namespace ProjetoCadastro.Controller
     public class Controlador
     {
         private Form1 telaPrincipal;
+        Produto produto;
+        ProdutoDAO dao;
 
         public Controlador(Form1 form1)
         {
@@ -20,24 +22,23 @@ namespace ProjetoCadastro.Controller
         
 
         //implementar uma busca através do nome
-
+        
         public void inserirNovoProduto()
         {   
             try
             {   
-                Produto produto = new Produto(
-                    Int32.Parse(telaPrincipal.getTxtId()), // vazio -> catch
-                    telaPrincipal.getTxtNome(), 
-                    Double.Parse(telaPrincipal.getTxtValor())); // vazio -> catch
+                produto = new Produto(
+                                        Int32.Parse(telaPrincipal.getTxtId()), // vazio -> catch
+                                        telaPrincipal.getTxtNome(), 
+                                        Double.Parse(telaPrincipal.getTxtValor())); // vazio -> catch
 
-                if (produto.getNome() != String.Empty && produto.getId() > 0)
-                {
-                    ProdutoDAO dao = new ProdutoDAO();
-                    int resultadoDaOperação = dao.salvarProduto(produto);
-                    exibirResultadoDaOperacaoInserir(resultadoDaOperação);
+                if (produto.getNome() == String.Empty || produto.getId() == 0){
+                    
+                    MessageBox.Show("Insira corretamente as informações");
                 }
                 else{
-                    MessageBox.Show("Insira as informações corretamente!");
+                    dao = new ProdutoDAO();
+                    exibirResultadoDaOperacaoInserir(dao.inserirNovoProduto(produto));
                 }
             }
             catch{
@@ -49,15 +50,13 @@ namespace ProjetoCadastro.Controller
         {
             try
             {
-                Produto produto = new Produto();
+                produto = new Produto();
                 produto.setId(Int32.Parse(telaPrincipal.getTxtId()));     // vazio -> catch
 
                 if (MessageBox.Show("Tem certeza que deseja excluir o produto?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    ProdutoDAO dao = new ProdutoDAO();
-                    int resultadoDaOperacao = dao.deletarProdutoPorId(produto);
-
-                    exibirResultadoDaOperacaoDeletar(resultadoDaOperacao);
+                    dao = new ProdutoDAO();
+                    exibirResultadoDaOperacaoDeletar(dao.deletarProdutoPorId(produto));
                 }
             }
             catch{
@@ -69,22 +68,20 @@ namespace ProjetoCadastro.Controller
         {
             try
             {
-                Produto produto = new Produto(
-                    Int32.Parse(telaPrincipal.getTxtId()), // vazio -> catch
-                    telaPrincipal.getTxtNome(), 
-                    Double.Parse(telaPrincipal.getTxtValor())); // vazio -> catch
+                produto = new Produto(
+                                        Int32.Parse(telaPrincipal.getTxtId()), // vazio -> catch
+                                        telaPrincipal.getTxtNome(), 
+                                        Double.Parse(telaPrincipal.getTxtValor())); // vazio -> catch
 
-                if (MessageBox.Show("Tem certeza que deseja alterar as informações do produto?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    if (produto.getNome() != String.Empty)
-                    {
-                        ProdutoDAO dao = new ProdutoDAO();
-                        int resultadoDaOperacao = dao.atualizarProduto(produto);
+                if (produto.getNome() == String.Empty){
 
-                        exibirResultadoDaOperacaoAtualizar(resultadoDaOperacao);
-                    }
-                    else{
-                        MessageBox.Show("Insira as informações corretamente!");
+                    MessageBox.Show("Insira o nome do produto!");
+                }
+                else{
+                    if (MessageBox.Show("Tem certeza que deseja alterar as informações do produto?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
+                        
+                        dao = new ProdutoDAO();
+                        exibirResultadoDaOperacaoAtualizar(dao.atualizarProduto(produto));
                     }
                 }
             }
@@ -97,14 +94,11 @@ namespace ProjetoCadastro.Controller
         {
             try
             {
-                Produto produto = new Produto();
+                produto = new Produto();
                 produto.setId(Int32.Parse(telaPrincipal.getTxtPesquisar())); // vazio -> catch
 
-                ProdutoDAO dao = new ProdutoDAO();
-                Produto produtoPesquisado = new Produto();
-
-                produtoPesquisado = dao.pesquisarPorId(produto);
-                exibirResultadoDaOperacaoPesquisarPorId(produtoPesquisado);
+                dao = new ProdutoDAO();
+                exibirResultadoDaOperacaoPesquisarPorId(dao.pesquisarPorId(produto));
             }
             catch{
                 MessageBox.Show("Insira os valores corretamente!");
@@ -113,7 +107,7 @@ namespace ProjetoCadastro.Controller
 
         public void carregarTabelaProdutos()
         {
-            ProdutoDAO dao = new ProdutoDAO();
+            dao = new ProdutoDAO();
             DataTable dt = new DataTable();
             telaPrincipal.getDtGrid().DataSource = dao.pesquisarTodosOsProdutos();
         }
@@ -122,54 +116,45 @@ namespace ProjetoCadastro.Controller
 
 
 
-        private DialogResult exibirResultadoDaOperacaoInserir(Int32 resultadoDaOperação)
+        private void exibirResultadoDaOperacaoInserir(Int32 resultadoDaOperação)
         {
-            if (resultadoDaOperação == 1)
-            {
+            if (resultadoDaOperação == 1){
                 carregarTabelaProdutos();
-
-                return MessageBox.Show("Inserido com sucesso!");
+                MessageBox.Show("Inserido com sucesso!");
             }
-            else
-            {
-               return MessageBox.Show("Produto já cadastrado!");
+            else{
+                MessageBox.Show("ID já cadastrado!");
             }
         }
-        private DialogResult exibirResultadoDaOperacaoDeletar(Int32 resultadoDaOperação)
-        {
-            if (resultadoDaOperação == 1)
-            {
-                carregarTabelaProdutos();
 
-                return MessageBox.Show("Produto excluido com sucesso!");
+        private void exibirResultadoDaOperacaoDeletar(Int32 resultadoDaOperação)
+        {
+            if (resultadoDaOperação == 1){
+                carregarTabelaProdutos();
+                MessageBox.Show("Produto excluido com sucesso!");
             }
-            else
-            {
-                return MessageBox.Show("Produto inexistente");
+            else{
+                MessageBox.Show("ID inexistente");
             }
         }
-        private DialogResult exibirResultadoDaOperacaoAtualizar(Int32 resultadoDaOperação)
+
+        private void exibirResultadoDaOperacaoAtualizar(Int32 resultadoDaOperação)
         {
-            if (resultadoDaOperação == 1)
-            {
+            if (resultadoDaOperação == 1){
                 carregarTabelaProdutos();
-
-                return MessageBox.Show("Produto alterado com sucesso!");
+                MessageBox.Show("Produto alterado com sucesso!");
             }
-            else
-            {
-                return MessageBox.Show("Produto inexistente!");
+            else{
+                MessageBox.Show("Produto inexistente!");
             }
-
         }
+
         private void exibirResultadoDaOperacaoPesquisarPorId(Produto produto)
         {
-            if (produto.getId() == 0)
-            {
-                MessageBox.Show("Produto inexistente");
+            if (produto.getId() == 0){
+                MessageBox.Show("ID inexistente");
             }
-            else
-            {
+            else{
                 telaPrincipal.setTxtId(Convert.ToString(produto.getId()));
                 telaPrincipal.setTxtNome(Convert.ToString(produto.getNome()));
                 telaPrincipal.setTxtValor(Convert.ToString(produto.getValor()));

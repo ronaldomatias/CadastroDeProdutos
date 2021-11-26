@@ -11,10 +11,10 @@ namespace ProjetoCadastro.DAO
     public class ProdutoDAO
     {
         NpgsqlDataReader dadosDoProduto;
+        int resultadoDaOperacao;
 
-        public int salvarProduto(Produto produto)
+        public int inserirNovoProduto(Produto produto)
         {
-            int resultadoDaOperacao = 0;
             using (NpgsqlConnection con = Conexao.obterConexao())
             {
                 NpgsqlCommand sqlComando = new NpgsqlCommand("INSERT INTO produto VALUES(@id, @nome, @valor)", con);
@@ -40,7 +40,6 @@ namespace ProjetoCadastro.DAO
 
         public int deletarProdutoPorId(Produto produto)
         {
-            int resultadoDaOperacao = 0;
             using (NpgsqlConnection con = Conexao.obterConexao())
             {
                 NpgsqlCommand sqlComando = new NpgsqlCommand("DELETE FROM produto WHERE id = @id", con);
@@ -65,7 +64,6 @@ namespace ProjetoCadastro.DAO
 
         public int atualizarProduto(Produto produto)
         {
-            int resultadoDaOperacao = 0;
             using (NpgsqlConnection con = Conexao.obterConexao())
             {
                 NpgsqlCommand sqlComando = new NpgsqlCommand("UPDATE produto SET id=@id, nome=@nome, valor=@valor WHERE id = @id", con);

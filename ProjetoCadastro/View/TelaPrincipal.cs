@@ -18,7 +18,6 @@ namespace ProjetoCadastro
 
         public Form1()
         {
-            this.controlador = new Controlador(this);
             InitializeComponent();
         }
 
@@ -77,11 +76,15 @@ namespace ProjetoCadastro
         }
 
 
+        public void setControlador(Controlador controlador)
+        {
+            this.controlador = controlador;
+        }
+
         public DataGridView getDtGrid()
         {
             return dataGridView1;
         }
-
         public String getTxtId()
         {
             return txtId.Text;

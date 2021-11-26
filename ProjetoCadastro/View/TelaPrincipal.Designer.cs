@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnInserir = new System.Windows.Forms.Button();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblValor = new System.Windows.Forms.Label();
@@ -55,7 +55,7 @@
             this.btnInserir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInserir.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInserir.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnInserir.Location = new System.Drawing.Point(265, 304);
+            this.btnInserir.Location = new System.Drawing.Point(197, 290);
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(132, 29);
             this.btnInserir.TabIndex = 0;
@@ -68,7 +68,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblNome.Location = new System.Drawing.Point(341, 211);
+            this.lblNome.Location = new System.Drawing.Point(178, 166);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(73, 23);
             this.lblNome.TabIndex = 1;
@@ -79,7 +79,7 @@
             this.lblValor.AutoSize = true;
             this.lblValor.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValor.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblValor.Location = new System.Drawing.Point(331, 257);
+            this.lblValor.Location = new System.Drawing.Point(168, 222);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(83, 23);
             this.lblValor.TabIndex = 2;
@@ -90,7 +90,7 @@
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblId.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.lblId.Location = new System.Drawing.Point(378, 166);
+            this.lblId.Location = new System.Drawing.Point(215, 123);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(36, 23);
             this.lblId.TabIndex = 3;
@@ -99,29 +99,29 @@
             // txtId
             // 
             this.txtId.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtId.Location = new System.Drawing.Point(420, 163);
+            this.txtId.Location = new System.Drawing.Point(289, 123);
             this.txtId.MaxLength = 10;
             this.txtId.Name = "txtId";
-            this.txtId.Size = new System.Drawing.Size(121, 26);
+            this.txtId.Size = new System.Drawing.Size(252, 26);
             this.txtId.TabIndex = 4;
             this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(420, 208);
+            this.txtNome.Location = new System.Drawing.Point(289, 167);
             this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(121, 26);
+            this.txtNome.Size = new System.Drawing.Size(252, 26);
             this.txtNome.TabIndex = 5;
             // 
             // txtValor
             // 
             this.txtValor.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValor.Location = new System.Drawing.Point(420, 255);
+            this.txtValor.Location = new System.Drawing.Point(289, 222);
             this.txtValor.MaxLength = 10;
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(121, 26);
+            this.txtValor.Size = new System.Drawing.Size(252, 26);
             this.txtValor.TabIndex = 6;
             this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
             // 
@@ -132,7 +132,7 @@
             this.btnDeletar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeletar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeletar.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnDeletar.Location = new System.Drawing.Point(414, 304);
+            this.btnDeletar.Location = new System.Drawing.Point(353, 290);
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.Size = new System.Drawing.Size(132, 29);
             this.btnDeletar.TabIndex = 7;
@@ -147,7 +147,7 @@
             this.btnAtualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAtualizar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtualizar.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnAtualizar.Location = new System.Drawing.Point(566, 304);
+            this.btnAtualizar.Location = new System.Drawing.Point(508, 290);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(132, 29);
             this.btnAtualizar.TabIndex = 8;
@@ -162,7 +162,7 @@
             this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPesquisar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisar.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnPesquisar.Location = new System.Drawing.Point(382, 457);
+            this.btnPesquisar.Location = new System.Drawing.Point(326, 395);
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(196, 29);
             this.btnPesquisar.TabIndex = 11;
@@ -173,7 +173,7 @@
             // txtPesquisar
             // 
             this.txtPesquisar.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(420, 412);
+            this.txtPesquisar.Location = new System.Drawing.Point(360, 363);
             this.txtPesquisar.MaxLength = 10;
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(121, 26);
@@ -182,34 +182,34 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.SteelBlue;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Rockwell", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Rockwell", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.HotTrack;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dataGridView1.Location = new System.Drawing.Point(759, 78);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Rockwell", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Rockwell", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridView1.Size = new System.Drawing.Size(360, 623);
             this.dataGridView1.TabIndex = 13;
             // 
