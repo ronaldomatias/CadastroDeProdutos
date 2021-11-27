@@ -15,14 +15,15 @@ namespace ProjetoCadastro.Controller
         Produto produto;
         ProdutoDAO dao;
 
+        // CONSTRUTOR DA CLASSE;
         public Controlador(Form1 form1)
         {
             this.telaPrincipal = form1;
         }
         
 
-        //implementar uma busca através do nome
-        
+        //METODOS DE VERIFICAÇÃO DAS TEXTBOX, PARA EM SEGUIDA, EFETUAR OS PROCEDIMENTOS CRUD;
+
         public void inserirNovoProduto()
         {   
             try
@@ -98,28 +99,45 @@ namespace ProjetoCadastro.Controller
                 produto.setId(Int32.Parse(telaPrincipal.getTxtPesquisar())); // vazio -> catch
 
                 dao = new ProdutoDAO();
-                exibirResultadoDaOperacaoPesquisarPorId(dao.pesquisarPorId(produto));
+                telaPrincipal.getDtGrid().DataSource = dao.pesquisarProdutoPorIdRetornaTabela(produto);
+                montarTextBoxProduto(dao.pesquisarPorIdRetornaProduto(produto));
             }
             catch{
                 MessageBox.Show("Insira os valores corretamente!");
             }
         }
 
-        public void carregarTabelaProdutos()
-        {
+        public void pesquisarTodosOsProdutos()
+        {   
             dao = new ProdutoDAO();
-            DataTable dt = new DataTable();
             telaPrincipal.getDtGrid().DataSource = dao.pesquisarTodosOsProdutos();
         }
 
+        private void montarTextBoxProduto(Produto produto)
+        {
+            if (produto.getId() == 0)
+            {
+                MessageBox.Show("ID inexistente");
+            }
+            else
+            {
+                telaPrincipal.setTxtId(Convert.ToString(produto.getId()));
+                telaPrincipal.setTxtNome(Convert.ToString(produto.getNome()));
+                telaPrincipal.setTxtValor(Convert.ToString(produto.getValor()));
+            }
+        }
+        
 
 
 
 
+
+
+        // METODOS QUE RECEBEM O RETORNO DA OPERAÇÃO CRUD, E VERIFICA SE A OPERAÇÃO FOI REALIZADA;
         private void exibirResultadoDaOperacaoInserir(Int32 resultadoDaOperação)
         {
             if (resultadoDaOperação == 1){
-                carregarTabelaProdutos();
+                pesquisarTodosOsProdutos();
                 MessageBox.Show("Inserido com sucesso!");
             }
             else{
@@ -130,7 +148,7 @@ namespace ProjetoCadastro.Controller
         private void exibirResultadoDaOperacaoDeletar(Int32 resultadoDaOperação)
         {
             if (resultadoDaOperação == 1){
-                carregarTabelaProdutos();
+                pesquisarTodosOsProdutos();
                 MessageBox.Show("Produto excluido com sucesso!");
             }
             else{
@@ -141,26 +159,13 @@ namespace ProjetoCadastro.Controller
         private void exibirResultadoDaOperacaoAtualizar(Int32 resultadoDaOperação)
         {
             if (resultadoDaOperação == 1){
-                carregarTabelaProdutos();
+                pesquisarTodosOsProdutos();
                 MessageBox.Show("Produto alterado com sucesso!");
             }
             else{
-                MessageBox.Show("Produto inexistente!");
+                MessageBox.Show("ID inexistente!");
             }
         }
-
-        private void exibirResultadoDaOperacaoPesquisarPorId(Produto produto)
-        {
-            if (produto.getId() == 0){
-                MessageBox.Show("ID inexistente");
-            }
-            else{
-                telaPrincipal.setTxtId(Convert.ToString(produto.getId()));
-                telaPrincipal.setTxtNome(Convert.ToString(produto.getNome()));
-                telaPrincipal.setTxtValor(Convert.ToString(produto.getValor()));
-            }
-        }
-
 
 
 

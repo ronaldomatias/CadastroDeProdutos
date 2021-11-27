@@ -16,17 +16,24 @@ namespace ProjetoCadastro
     {
         private Controlador controlador;
 
+
+        // CONSTRUTOR DA CLASSE;
         public Form1()
         {
             InitializeComponent();
         }
 
 
+
+        // ACAO DA INICIALIZAÇÃO DA TELA;
         private void Form1_Load(object sender, EventArgs e)
         {
-            controlador.carregarTabelaProdutos();
+            controlador.pesquisarTodosOsProdutos();
         }
 
+
+
+        // AÇÃO DE CLIQUE DOS BOTÕES;
         private void btnInserir_Click(object sender, EventArgs e)
         {
             controlador.inserirNovoProduto();
@@ -47,22 +54,24 @@ namespace ProjetoCadastro
             controlador.pesquisarProdutoPorId();
         }
 
-        
-
-
-
-        
-
-        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnMostrarProdutos_Click(object sender, EventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08 && e.KeyChar != 44)
+            controlador.pesquisarTodosOsProdutos();
+        }
+
+
+
+        // ACAO DE PRESSIONAMENTO TECLA DAS TEXTBOX;
+        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
             {
                 e.Handled = true;
             }
         }
-        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08 && e.KeyChar != 44)
             {
                 e.Handled = true;
             }
@@ -76,11 +85,8 @@ namespace ProjetoCadastro
         }
 
 
-        public void setControlador(Controlador controlador)
-        {
-            this.controlador = controlador;
-        }
 
+        // METODOS GET & SET;
         public DataGridView getDtGrid()
         {
             return dataGridView1;
@@ -114,7 +120,12 @@ namespace ProjetoCadastro
         {
             txtValor.Text = v;
         }
+        public void setControlador(Controlador controlador)
+        {
+            this.controlador = controlador;
+        }
 
-        
+
+
     }
 }

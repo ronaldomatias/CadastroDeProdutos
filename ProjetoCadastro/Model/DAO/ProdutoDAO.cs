@@ -10,8 +10,9 @@ namespace ProjetoCadastro.DAO
 {
     public class ProdutoDAO
     {
-        NpgsqlDataReader dadosDoProduto;
         int resultadoDaOperacao;
+        DataTable tabelaProdutos;
+        NpgsqlDataReader dadosDoProduto;
 
         public int inserirNovoProduto(Produto produto)
         {
@@ -80,39 +81,26 @@ namespace ProjetoCadastro.DAO
             return resultadoDaOperacao;
         }
 
-        public Produto pesquisarPorId(Produto produto)
+        public DataTable pesquisarProdutoPorIdRetornaTabela(Produto produto)
         {
             Produto produtoPesquisado = new Produto();
+            tabelaProdutos = new DataTable();
+
             using (NpgsqlConnection con = Conexao.obterConexao())
             {
-                NpgsqlCommand sqlComando = new NpgsqlCommand("SELECT id, nome, valor FROM produto WHERE id=@id", con);
-                sqlComando.Parameters.AddWithValue("id", NpgsqlTypes.NpgsqlDbType.Integer).Value = produto.getId();
+                String sqlComando = "SELECT id, nome, valor FROM produto WHERE id= " + produto.getId();
 
                 con.Open();
-                try
-                {   
-                    dadosDoProduto = sqlComando.ExecuteReader();
-                    dadosDoProduto.Read();
+                var dataAdapter = new NpgsqlDataAdapter(sqlComando, con);
+                dataAdapter.Fill(tabelaProdutos);
 
-                    produtoPesquisado.setId(dadosDoProduto.GetInt32(0));
-                    produtoPesquisado.setNome(dadosDoProduto.GetString(1));
-                    produtoPesquisado.setValor(dadosDoProduto.GetDouble(2));
-
-                    dadosDoProduto.Close();
-                    con.Close();
-                }
-                catch{
-                    con.Close();
-                    dadosDoProduto.Close();
-                }
-                
-            return produtoPesquisado;
+                return tabelaProdutos;
             }
         }
 
         public DataTable pesquisarTodosOsProdutos()
         {
-            var tabelaProdutos = new DataTable();
+            tabelaProdutos = new DataTable();
             String sqlComando = "SELECT id, nome, valor FROM produto ORDER BY id ASC";
             
             using (NpgsqlConnection con = Conexao.obterConexao())
@@ -125,6 +113,41 @@ namespace ProjetoCadastro.DAO
 
             return tabelaProdutos;
         }
+
+        public Produto pesquisarPorIdRetornaProduto(Produto produto)
+        {
+            Produto produtoPesquisado = new Produto();
+
+            using (NpgsqlConnection con = Conexao.obterConexao())
+            {
+                NpgsqlCommand sqlComando = new NpgsqlCommand("SELECT id, nome, valor FROM produto WHERE id=@id", con);
+                sqlComando.Parameters.AddWithValue("id", NpgsqlTypes.NpgsqlDbType.Integer).Value = produto.getId();
+
+                con.Open();
+                try
+                {
+                    dadosDoProduto = sqlComando.ExecuteReader();
+                    dadosDoProduto.Read();
+
+                    produtoPesquisado.setId(dadosDoProduto.GetInt32(0));
+                    produtoPesquisado.setNome(dadosDoProduto.GetString(1));
+                    produtoPesquisado.setValor(dadosDoProduto.GetDouble(2));
+
+                    dadosDoProduto.Close();
+                    con.Close();
+                }
+                catch
+                {
+                    con.Close();
+                    dadosDoProduto.Close();
+                }
+
+                return produtoPesquisado;
+            }
+        }
+
+
+
     }
 }
 
