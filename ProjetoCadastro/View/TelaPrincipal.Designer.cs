@@ -56,11 +56,11 @@
             this.btnInserir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInserir.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInserir.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnInserir.Location = new System.Drawing.Point(306, 161);
+            this.btnInserir.Location = new System.Drawing.Point(306, 346);
             this.btnInserir.Name = "btnInserir";
-            this.btnInserir.Size = new System.Drawing.Size(114, 29);
+            this.btnInserir.Size = new System.Drawing.Size(127, 29);
             this.btnInserir.TabIndex = 0;
-            this.btnInserir.Text = "INSERIR";
+            this.btnInserir.Text = "CADASTRAR";
             this.btnInserir.UseVisualStyleBackColor = false;
             this.btnInserir.Click += new System.EventHandler(this.btnInserir_Click);
             // 
@@ -68,7 +68,7 @@
             // 
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.lblNome.ForeColor = System.Drawing.SystemColors.MenuText;
             this.lblNome.Location = new System.Drawing.Point(227, 255);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(73, 23);
@@ -79,7 +79,7 @@
             // 
             this.lblValor.AutoSize = true;
             this.lblValor.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValor.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.lblValor.ForeColor = System.Drawing.SystemColors.MenuText;
             this.lblValor.Location = new System.Drawing.Point(217, 307);
             this.lblValor.Name = "lblValor";
             this.lblValor.Size = new System.Drawing.Size(83, 23);
@@ -90,7 +90,7 @@
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.lblId.ForeColor = System.Drawing.SystemColors.MenuText;
             this.lblId.Location = new System.Drawing.Point(264, 208);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(36, 23);
@@ -133,11 +133,11 @@
             this.btnDeletar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeletar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeletar.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnDeletar.Location = new System.Drawing.Point(380, 336);
+            this.btnDeletar.Location = new System.Drawing.Point(384, 156);
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.Size = new System.Drawing.Size(108, 29);
             this.btnDeletar.TabIndex = 7;
-            this.btnDeletar.Text = "DELETAR";
+            this.btnDeletar.Text = "REMOVER";
             this.btnDeletar.UseVisualStyleBackColor = false;
             this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
             // 
@@ -148,11 +148,11 @@
             this.btnAtualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAtualizar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtualizar.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnAtualizar.Location = new System.Drawing.Point(439, 161);
+            this.btnAtualizar.Location = new System.Drawing.Point(439, 346);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(119, 29);
             this.btnAtualizar.TabIndex = 8;
-            this.btnAtualizar.Text = "ATUALIZAR";
+            this.btnAtualizar.Text = "ALTERAR";
             this.btnAtualizar.UseVisualStyleBackColor = false;
             this.btnAtualizar.Click += new System.EventHandler(this.btnAtualizar_Click);
             // 
@@ -185,7 +185,7 @@
             // 
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.SteelBlue;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -218,7 +218,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.label1.ForeColor = System.Drawing.Color.Yellow;
             this.label1.Location = new System.Drawing.Point(846, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 35);
@@ -231,11 +231,11 @@
             this.btnMostrarProdutos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMostrarProdutos.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
             this.btnMostrarProdutos.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnMostrarProdutos.Location = new System.Drawing.Point(534, 660);
+            this.btnMostrarProdutos.Location = new System.Drawing.Point(576, 660);
             this.btnMostrarProdutos.Name = "btnMostrarProdutos";
-            this.btnMostrarProdutos.Size = new System.Drawing.Size(219, 23);
+            this.btnMostrarProdutos.Size = new System.Drawing.Size(177, 23);
             this.btnMostrarProdutos.TabIndex = 15;
-            this.btnMostrarProdutos.Text = "MOSTRAR PRODUTOS";
+            this.btnMostrarProdutos.Text = "MOSTRAR TODOS";
             this.btnMostrarProdutos.UseVisualStyleBackColor = false;
             this.btnMostrarProdutos.Click += new System.EventHandler(this.btnMostrarProdutos_Click);
             // 

@@ -10,10 +10,13 @@ namespace ProjetoCadastro.DAO
 {
     public class ProdutoDAO
     {
-        int resultadoDaOperacao;
-        DataTable tabelaProdutos;
-        NpgsqlDataReader dadosDoProduto;
+        private int resultadoDaOperacao;
+        private DataTable tabelaProdutos;
+        private NpgsqlDataReader dadosDoProduto;
 
+
+
+        // METODOS DAO
         public int inserirNovoProduto(Produto produto)
         {
             using (NpgsqlConnection con = Conexao.obterConexao())
@@ -98,22 +101,6 @@ namespace ProjetoCadastro.DAO
             }
         }
 
-        public DataTable pesquisarTodosOsProdutos()
-        {
-            tabelaProdutos = new DataTable();
-            String sqlComando = "SELECT id, nome, valor FROM produto ORDER BY id ASC";
-            
-            using (NpgsqlConnection con = Conexao.obterConexao())
-            {
-                con.Open();
-                var dataAdapter = new NpgsqlDataAdapter(sqlComando, con);
-                dataAdapter.Fill(tabelaProdutos);
-                con.Close();
-            }
-
-            return tabelaProdutos;
-        }
-
         public Produto pesquisarPorIdRetornaProduto(Produto produto)
         {
             Produto produtoPesquisado = new Produto();
@@ -145,6 +132,24 @@ namespace ProjetoCadastro.DAO
                 return produtoPesquisado;
             }
         }
+
+        public DataTable pesquisarTodosOsProdutos()
+        {
+            tabelaProdutos = new DataTable();
+            String sqlComando = "SELECT * FROM produto ORDER BY id ASC";
+            
+            using (NpgsqlConnection con = Conexao.obterConexao())
+            {
+                con.Open();
+                var dataAdapter = new NpgsqlDataAdapter(sqlComando, con);
+                dataAdapter.Fill(tabelaProdutos);
+                con.Close();
+            }
+
+            return tabelaProdutos;
+        }
+
+        
 
 
 

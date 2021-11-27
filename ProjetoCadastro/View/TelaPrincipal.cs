@@ -17,7 +17,7 @@ namespace ProjetoCadastro
         private Controlador controlador;
 
 
-        // CONSTRUTOR DA CLASSE;
+        // CONSTRUTOR;
         public Form1()
         {
             InitializeComponent();
@@ -86,7 +86,7 @@ namespace ProjetoCadastro
 
 
 
-        // METODOS GET & SET;
+        // METODOS GET;
         public DataGridView getDtGrid()
         {
             return dataGridView1;
@@ -107,7 +107,8 @@ namespace ProjetoCadastro
         {
             return txtPesquisar.Text;
         }
-
+        
+        // METODOS SET;
         public void setTxtId(String i)
         {
             txtId.Text = i;
@@ -124,6 +125,9 @@ namespace ProjetoCadastro
         {
             this.controlador = controlador;
         }
+
+
+
 
 
 

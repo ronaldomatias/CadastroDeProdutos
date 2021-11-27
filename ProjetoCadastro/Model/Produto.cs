@@ -12,43 +12,52 @@ namespace ProjetoCadastro.DAO
         private String nome;
         private Double valor;
 
+
+
+        // CONSTRUTORES
         public Produto(Int32 i, String n, Double v)
         {
             this.id = i;
             this.nome = n;
             this.valor = v;
         }
+        public Produto(Int32 i)
+        {
+            this.id = i;
+        }
         public Produto()
         {
-
         }
 
-        public void setId(Int32 c)
-        {
-            this.id = c;
-        }
+
+        // METODOS GET
         public Int32 getId()
         {
             return id;
-        }
-
-        public void setNome(String n)
-        {
-            this.nome = n;
         }
         public String getNome()
         {
             return nome;
         }
-
-        public void setValor(Double v)
-        {
-            this.valor = v;
-        }
         public Double getValor()
         {
             return valor;
         }
+
+        // METODOS SET
+        public void setId(Int32 c)
+        {
+            this.id = c;
+        }
+        public void setNome(String n)
+        {
+            this.nome = n;
+        }
+        public void setValor(Double v)
+        {
+            this.valor = v;
+        }
+        
 
     }
 }

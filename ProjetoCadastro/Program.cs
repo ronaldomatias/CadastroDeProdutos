@@ -17,10 +17,10 @@ namespace ProjetoCadastro
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 formulario = new Form1();
-            Controlador controlador = new Controlador(formulario);
-            formulario.setControlador(controlador);
-            Application.Run(formulario);
+            Form1 telaInicial = new Form1();
+            Controlador controlador = new Controlador(telaInicial);
+            telaInicial.setControlador(controlador);
+            Application.Run(telaInicial);
         }
     }
 }
