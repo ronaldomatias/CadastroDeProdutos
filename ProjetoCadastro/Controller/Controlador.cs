@@ -204,6 +204,9 @@ namespace ProjetoCadastro.Controller
             {
                 MessageBox.Show("Nome não encontrado");
             }
+            telaPrincipal.setTxtId("");
+            telaPrincipal.setTxtNome("");
+            telaPrincipal.setTxtValor("");
         }
 
 
