@@ -90,6 +90,22 @@ namespace ProjetoCadastro.Controller
             }
         }
 
+        public void pesquisarProduto()
+        {
+            if (telaPrincipal.getComboBox().SelectedIndex.Equals(-1))
+            {
+                MessageBox.Show("Escolha o tipo de filtro");
+            }
+            else if (telaPrincipal.getComboBox().SelectedIndex.Equals(0))
+            {
+                pesquisarProdutoPorId();
+            }
+            else if (telaPrincipal.getComboBox().SelectedIndex.Equals(1))
+            {
+                pesquisarProdutoPorNome();
+            }
+        }
+
         public void pesquisarProdutoPorId()
         {
             try
@@ -100,7 +116,8 @@ namespace ProjetoCadastro.Controller
                 telaPrincipal.getDtGrid().DataSource = dao.pesquisarProdutoPorIdRetornaTabela(produto);
                 exibirDadosDoProdutoNasCaixasTexto(dao.pesquisarPorIdRetornaProduto(produto));
             }
-            catch{
+            catch
+            {
                 MessageBox.Show("Insira o ID corretamente!");
             }
         }
@@ -108,7 +125,7 @@ namespace ProjetoCadastro.Controller
         public void pesquisarProdutoPorNome()
         {
             produto = new Produto();
-            produto.setNome(telaPrincipal.getTxtPesquisarNome());
+            produto.setNome(telaPrincipal.getTxtPesquisar());
 
             if (produto.getNome() == String.Empty)
             {

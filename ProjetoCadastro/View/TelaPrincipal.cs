@@ -52,7 +52,7 @@ namespace ProjetoCadastro
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            controlador.pesquisarProdutoPorId();
+            controlador.pesquisarProduto();
         }
 
         private void btnPesquisarNome_Click(object sender, EventArgs e)
@@ -82,14 +82,7 @@ namespace ProjetoCadastro
                 e.Handled = true;
             }
         }
-        private void txtPesquisar_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != 08)
-            {
-                e.Handled = true;
-            }
-        }
-
+        
         
 
         // METODOS GET;
@@ -113,10 +106,11 @@ namespace ProjetoCadastro
         {
             return txtPesquisar.Text;
         }
-        public String getTxtPesquisarNome()
+        public ComboBox getComboBox()
         {
-            return txtPesquisarNome.Text;
+            return comboBox;
         }
+
 
         // METODOS SET;
         public void setTxtId(String i)
