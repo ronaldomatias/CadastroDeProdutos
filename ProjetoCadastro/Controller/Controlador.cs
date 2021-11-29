@@ -34,7 +34,6 @@ namespace ProjetoCadastro.Controller
                                       telaPrincipal.getTxtNome(),
                                       Double.Parse(telaPrincipal.getTxtValor())); // vazio -> catch
 
-
                 if (produto.getNome() == String.Empty || produto.getId() == 0){
                     
                     MessageBox.Show("Insira corretamente as informações");
@@ -74,7 +73,6 @@ namespace ProjetoCadastro.Controller
                                       telaPrincipal.getTxtNome(),
                                       Double.Parse(telaPrincipal.getTxtValor())); // vazio -> catch
 
-
                 if (produto.getNome() == String.Empty){
 
                     MessageBox.Show("Insira o nome do produto!");
@@ -103,17 +101,34 @@ namespace ProjetoCadastro.Controller
                 exibirDadosDoProdutoNasCaixasTexto(dao.pesquisarPorIdRetornaProduto(produto));
             }
             catch{
-                MessageBox.Show("Insira os valores corretamente!");
+                MessageBox.Show("Insira o ID corretamente!");
             }
         }
 
+        public void pesquisarProdutoPorNome()
+        {
+            produto = new Produto();
+            produto.setNome(telaPrincipal.getTxtPesquisarNome());
+
+            if (produto.getNome() == String.Empty)
+            {
+                MessageBox.Show("Insira o nome!");
+            }
+            else{
+                dao = new ProdutoDAO();
+                DataTable dt = dao.pesquisarProdutoPorNomeRetornaTabela(produto);
+                telaPrincipal.getDtGrid().DataSource = dt;
+                exibirResultadoPesquisaPorNome(dt);
+            }
+        }
+        
         public void pesquisarTodosOsProdutos()
-        {   
+        {
             dao = new ProdutoDAO();
             telaPrincipal.getDtGrid().DataSource = dao.pesquisarTodosOsProdutos();
         }
 
-        
+
 
         // METODOS QUE RECEBEM O RETORNO DA OPERAÇÃO CRUD, E VERIFICAM SE A OPERAÇÃO FOI REALIZADA;
         private void exibirResultadoDaOperacaoInserir(Int32 resultadoDaOperação)
@@ -166,6 +181,13 @@ namespace ProjetoCadastro.Controller
             }
         }
 
+        private void exibirResultadoPesquisaPorNome(DataTable dt)
+        {
+            if(dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Nome não encontrado");
+            }
+        }
 
 
 

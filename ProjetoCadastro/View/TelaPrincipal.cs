@@ -17,6 +17,7 @@ namespace ProjetoCadastro
         private Controlador controlador;
 
 
+
         // CONSTRUTOR;
         public Form1()
         {
@@ -54,6 +55,11 @@ namespace ProjetoCadastro
             controlador.pesquisarProdutoPorId();
         }
 
+        private void btnPesquisarNome_Click(object sender, EventArgs e)
+        {
+            controlador.pesquisarProdutoPorNome();
+        }
+
         private void btnMostrarProdutos_Click(object sender, EventArgs e)
         {
             controlador.pesquisarTodosOsProdutos();
@@ -84,7 +90,7 @@ namespace ProjetoCadastro
             }
         }
 
-
+        
 
         // METODOS GET;
         public DataGridView getDtGrid()
@@ -107,7 +113,11 @@ namespace ProjetoCadastro
         {
             return txtPesquisar.Text;
         }
-        
+        public String getTxtPesquisarNome()
+        {
+            return txtPesquisarNome.Text;
+        }
+
         // METODOS SET;
         public void setTxtId(String i)
         {
@@ -126,10 +136,6 @@ namespace ProjetoCadastro
             this.controlador = controlador;
         }
 
-
-
-
-
-
+        
     }
 }

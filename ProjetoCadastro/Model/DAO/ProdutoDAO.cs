@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProjetoCadastro.DAO
 {
@@ -12,7 +13,7 @@ namespace ProjetoCadastro.DAO
     {
         private int resultadoDaOperacao;
         private DataTable tabelaProdutos;
-        private NpgsqlDataReader dadosDoProduto;
+        private NpgsqlDataReader dataReader;
 
 
 
@@ -113,23 +114,40 @@ namespace ProjetoCadastro.DAO
                 con.Open();
                 try
                 {
-                    dadosDoProduto = sqlComando.ExecuteReader();
-                    dadosDoProduto.Read();
+                    dataReader = sqlComando.ExecuteReader();
+                    dataReader.Read();
 
-                    produtoPesquisado.setId(dadosDoProduto.GetInt32(0));
-                    produtoPesquisado.setNome(dadosDoProduto.GetString(1));
-                    produtoPesquisado.setValor(dadosDoProduto.GetDouble(2));
+                    produtoPesquisado.setId(dataReader.GetInt32(0));
+                    produtoPesquisado.setNome(dataReader.GetString(1));
+                    produtoPesquisado.setValor(dataReader.GetDouble(2));
 
-                    dadosDoProduto.Close();
+                    dataReader.Close();
                     con.Close();
                 }
                 catch
                 {
                     con.Close();
-                    dadosDoProduto.Close();
+                    dataReader.Close();
                 }
 
                 return produtoPesquisado;
+            }
+        }
+
+        public DataTable pesquisarProdutoPorNomeRetornaTabela(Produto produto)
+        {
+            Produto produtoPesquisado = new Produto();
+            tabelaProdutos = new DataTable();
+
+            using (NpgsqlConnection con = Conexao.obterConexao())
+            {
+                String sqlComando = "SELECT id, nome, valor FROM produto WHERE nome ILIKE '%" + produto.getNome() + "%'";
+
+                con.Open();
+                var dataAdapter = new NpgsqlDataAdapter(sqlComando, con);
+                dataAdapter.Fill(tabelaProdutos);
+
+                return tabelaProdutos;
             }
         }
 

@@ -46,6 +46,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnMostrarProdutos = new System.Windows.Forms.Button();
+            this.btnPesquisarNome = new System.Windows.Forms.Button();
+            this.txtPesquisarNome = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             this.btnInserir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnInserir.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInserir.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnInserir.Location = new System.Drawing.Point(306, 346);
+            this.btnInserir.Location = new System.Drawing.Point(235, 346);
             this.btnInserir.Name = "btnInserir";
             this.btnInserir.Size = new System.Drawing.Size(127, 29);
             this.btnInserir.TabIndex = 0;
@@ -69,7 +71,7 @@
             this.lblNome.AutoSize = true;
             this.lblNome.Font = new System.Drawing.Font("Verdana", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lblNome.Location = new System.Drawing.Point(227, 255);
+            this.lblNome.Location = new System.Drawing.Point(227, 257);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(73, 23);
             this.lblNome.TabIndex = 1;
@@ -110,7 +112,7 @@
             // txtNome
             // 
             this.txtNome.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(306, 249);
+            this.txtNome.Location = new System.Drawing.Point(306, 256);
             this.txtNome.MaxLength = 100;
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(252, 26);
@@ -133,7 +135,7 @@
             this.btnDeletar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDeletar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeletar.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnDeletar.Location = new System.Drawing.Point(384, 156);
+            this.btnDeletar.Location = new System.Drawing.Point(493, 346);
             this.btnDeletar.Name = "btnDeletar";
             this.btnDeletar.Size = new System.Drawing.Size(108, 29);
             this.btnDeletar.TabIndex = 7;
@@ -148,7 +150,7 @@
             this.btnAtualizar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAtualizar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtualizar.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnAtualizar.Location = new System.Drawing.Point(439, 346);
+            this.btnAtualizar.Location = new System.Drawing.Point(368, 346);
             this.btnAtualizar.Name = "btnAtualizar";
             this.btnAtualizar.Size = new System.Drawing.Size(119, 29);
             this.btnAtualizar.TabIndex = 8;
@@ -163,9 +165,9 @@
             this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPesquisar.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisar.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnPesquisar.Location = new System.Drawing.Point(338, 441);
+            this.btnPesquisar.Location = new System.Drawing.Point(93, 500);
             this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(196, 29);
+            this.btnPesquisar.Size = new System.Drawing.Size(230, 29);
             this.btnPesquisar.TabIndex = 11;
             this.btnPesquisar.Text = "PESQUISAR POR ID";
             this.btnPesquisar.UseVisualStyleBackColor = false;
@@ -174,7 +176,7 @@
             // txtPesquisar
             // 
             this.txtPesquisar.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(306, 476);
+            this.txtPesquisar.Location = new System.Drawing.Point(82, 468);
             this.txtPesquisar.MaxLength = 10;
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(252, 26);
@@ -185,6 +187,7 @@
             // 
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -208,10 +211,11 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.RowHeadersWidth = 50;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView1.Size = new System.Drawing.Size(360, 605);
+            this.dataGridView1.Size = new System.Drawing.Size(541, 605);
             this.dataGridView1.TabIndex = 13;
             // 
             // label1
@@ -219,7 +223,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Yellow;
-            this.label1.Location = new System.Drawing.Point(846, 30);
+            this.label1.Location = new System.Drawing.Point(944, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(198, 35);
             this.label1.TabIndex = 14;
@@ -239,12 +243,36 @@
             this.btnMostrarProdutos.UseVisualStyleBackColor = false;
             this.btnMostrarProdutos.Click += new System.EventHandler(this.btnMostrarProdutos_Click);
             // 
+            // btnPesquisarNome
+            // 
+            this.btnPesquisarNome.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnPesquisarNome.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPesquisarNome.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
+            this.btnPesquisarNome.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnPesquisarNome.Location = new System.Drawing.Point(404, 500);
+            this.btnPesquisarNome.Name = "btnPesquisarNome";
+            this.btnPesquisarNome.Size = new System.Drawing.Size(230, 29);
+            this.btnPesquisarNome.TabIndex = 16;
+            this.btnPesquisarNome.Text = "PESQUISAR POR NOME";
+            this.btnPesquisarNome.UseVisualStyleBackColor = false;
+            this.btnPesquisarNome.Click += new System.EventHandler(this.btnPesquisarNome_Click);
+            // 
+            // txtPesquisarNome
+            // 
+            this.txtPesquisarNome.Font = new System.Drawing.Font("Rockwell", 12F);
+            this.txtPesquisarNome.Location = new System.Drawing.Point(394, 468);
+            this.txtPesquisarNome.Name = "txtPesquisarNome";
+            this.txtPesquisarNome.Size = new System.Drawing.Size(252, 26);
+            this.txtPesquisarNome.TabIndex = 17;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.ClientSize = new System.Drawing.Size(1180, 707);
+            this.ClientSize = new System.Drawing.Size(1312, 707);
+            this.Controls.Add(this.txtPesquisarNome);
+            this.Controls.Add(this.btnPesquisarNome);
             this.Controls.Add(this.btnMostrarProdutos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
@@ -286,6 +314,8 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnMostrarProdutos;
+        private System.Windows.Forms.Button btnPesquisarNome;
+        private System.Windows.Forms.TextBox txtPesquisarNome;
     }
 }
 
