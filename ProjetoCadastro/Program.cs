@@ -1,4 +1,5 @@
 ﻿using ProjetoCadastro.Controller;
+using ProjetoCadastro.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,10 +18,10 @@ namespace ProjetoCadastro
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Form1 telaInicial = new Form1();
-            Controlador controlador = new Controlador(telaInicial);
-            telaInicial.setControlador(controlador);
-            Application.Run(telaInicial);
+            Form1 visao = new Form1();
+            Modelo modelo = new Modelo();
+            Controlador controlador = new Controlador(visao, modelo);
+            Application.Run(visao);
         }
     }
 }

@@ -31,13 +31,13 @@ namespace ProjetoCadastro.DAO
                 con.Open();
                 try
                 {
-                    resultadoDaOperacao = sqlComando.ExecuteNonQuery(); // =1: produto cadastrado com sucesso!
-                    con.Close();
+                    resultadoDaOperacao = sqlComando.ExecuteNonQuery(); // =1 -> novo produto cadastrado!
                 }
                 catch{
-                    con.Close();
-                    resultadoDaOperacao = 0; // excessão =0: produto já cadastrado!
+                    resultadoDaOperacao = 0; // excessão =0 -> produto já cadastrado!
                  }
+
+                con.Close();
             }
 
             return resultadoDaOperacao;
@@ -54,16 +54,16 @@ namespace ProjetoCadastro.DAO
                 con.Open();
                 try
                 {
-                    resultadoDaOperacao = sqlComando.ExecuteNonQuery();
-                    con.Close();
+                    resultadoDaOperacao = sqlComando.ExecuteNonQuery(); // =1 -> produto deletado!
                 }
                 catch
                 {
-                    resultadoDaOperacao = 0;
-                    con.Close();
+                    resultadoDaOperacao = 0; // =0 -> produto inexistente!
                 }
+                con.Close();
             }
 
+            
             return resultadoDaOperacao;
         }
 
@@ -78,16 +78,40 @@ namespace ProjetoCadastro.DAO
                 sqlComando.CommandType = System.Data.CommandType.Text;
 
                 con.Open();
-                resultadoDaOperacao = sqlComando.ExecuteNonQuery();   // =0: id nao existe;  =1: sucesso!
+                try
+                {
+                    resultadoDaOperacao = sqlComando.ExecuteNonQuery();   // =1 -> produto atualizado!
+                }
+                catch
+                {
+                    resultadoDaOperacao = 0;    //= 0 -> id nao existe;
+                }
                 con.Close();
             }
 
             return resultadoDaOperacao;
         }
 
-        public DataTable pesquisarProdutoPorIdRetornaTabela(Produto produto)
+        public DataTable pesquisarTodosOsProdutos()
         {
-            Produto produtoPesquisado = new Produto();
+            tabelaProdutos = new DataTable();
+            String sqlComando = "SELECT * FROM produto ORDER BY id ASC";
+
+            using (NpgsqlConnection con = Conexao.obterConexao())
+            {
+                con.Open();
+
+                var dataAdapter = new NpgsqlDataAdapter(sqlComando, con);
+                dataAdapter.Fill(tabelaProdutos);
+
+                con.Close();
+            }
+
+            return tabelaProdutos;
+        }
+
+        public DataTable pesquisarPorIdRetornaTabela(Produto produto)
+        {
             tabelaProdutos = new DataTable();
 
             using (NpgsqlConnection con = Conexao.obterConexao())
@@ -97,6 +121,7 @@ namespace ProjetoCadastro.DAO
                 con.Open();
                 var dataAdapter = new NpgsqlDataAdapter(sqlComando, con);
                 dataAdapter.Fill(tabelaProdutos);
+                con.Close();
 
                 return tabelaProdutos;
             }
@@ -120,23 +145,19 @@ namespace ProjetoCadastro.DAO
                     produtoPesquisado.setId(dataReader.GetInt32(0));
                     produtoPesquisado.setNome(dataReader.GetString(1));
                     produtoPesquisado.setValor(dataReader.GetDouble(2));
+                }
+                catch{
+                }
 
-                    dataReader.Close();
-                    con.Close();
-                }
-                catch
-                {
-                    con.Close();
-                    dataReader.Close();
-                }
+                dataReader.Close();
+                con.Close();
 
                 return produtoPesquisado;
             }
         }
 
-        public DataTable pesquisarProdutoPorNomeRetornaTabela(Produto produto)
+        public DataTable pesquisarPorNomeRetornaTabela(Produto produto)
         {
-            Produto produtoPesquisado = new Produto();
             tabelaProdutos = new DataTable();
 
             using (NpgsqlConnection con = Conexao.obterConexao())
@@ -144,28 +165,17 @@ namespace ProjetoCadastro.DAO
                 String sqlComando = "SELECT id, nome, valor FROM produto WHERE nome ILIKE '%" + produto.getNome() + "%'";
 
                 con.Open();
+
                 var dataAdapter = new NpgsqlDataAdapter(sqlComando, con);
                 dataAdapter.Fill(tabelaProdutos);
+
+                con.Close();
 
                 return tabelaProdutos;
             }
         }
 
-        public DataTable pesquisarTodosOsProdutos()
-        {
-            tabelaProdutos = new DataTable();
-            String sqlComando = "SELECT * FROM produto ORDER BY id ASC";
-            
-            using (NpgsqlConnection con = Conexao.obterConexao())
-            {
-                con.Open();
-                var dataAdapter = new NpgsqlDataAdapter(sqlComando, con);
-                dataAdapter.Fill(tabelaProdutos);
-                con.Close();
-            }
-
-            return tabelaProdutos;
-        }
+        
 
         
 

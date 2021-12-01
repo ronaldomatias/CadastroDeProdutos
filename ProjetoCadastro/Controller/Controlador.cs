@@ -1,4 +1,5 @@
 ﻿using ProjetoCadastro.DAO;
+using ProjetoCadastro.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,14 +14,16 @@ namespace ProjetoCadastro.Controller
     {
         private Form1 telaPrincipal;
         private Produto produto;
-        private ProdutoDAO dao;
+        private Modelo modelo;
 
 
 
         // CONSTRUTOR DA CLASSE;
-        public Controlador(Form1 form1)
+        public Controlador(Form1 form1, Modelo modelo)
         {
             this.telaPrincipal = form1;
+            this.modelo = modelo;
+            telaPrincipal.setControlador(this);
         }
         
 
@@ -30,17 +33,17 @@ namespace ProjetoCadastro.Controller
         {   
             try
             {   
-                produto = new Produto(Int32.Parse(telaPrincipal.getTxtId()), // vazio -> catch
+                produto = new Produto(Int32.Parse(telaPrincipal.getTxtId()),    // vazio -> catch
                                       telaPrincipal.getTxtNome(),
-                                      Double.Parse(telaPrincipal.getTxtValor())); // vazio -> catch
+                                      Double.Parse(telaPrincipal.getTxtValor()));   // vazio -> catch
 
                 if (produto.getNome() == String.Empty || produto.getId() == 0){
                     
                     MessageBox.Show("Insira corretamente as informações");
                 }
                 else{
-                    dao = new ProdutoDAO();
-                    exibirResultadoDaOperacaoInserir(dao.inserirNovoProduto(produto));
+                    modelo = new Modelo();
+                    exibirResultadoDaOperacaoInserir(modelo.inserirNovoProduto(produto));
                 }
             }
             catch{
@@ -52,12 +55,12 @@ namespace ProjetoCadastro.Controller
         {
             try
             {
-                produto = new Produto(Int32.Parse(telaPrincipal.getTxtId())); // vazio -> catch
+                produto = new Produto(Int32.Parse(telaPrincipal.getTxtId()));   // vazio -> catch
 
                 if (MessageBox.Show("Tem certeza que deseja excluir o produto?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    dao = new ProdutoDAO();
-                    exibirResultadoDaOperacaoDeletar(dao.deletarProdutoPorId(produto));
+                    modelo = new Modelo();
+                    exibirResultadoDaOperacaoDeletar(modelo.deletarProduto(produto));
                 }
             }
             catch{
@@ -69,9 +72,9 @@ namespace ProjetoCadastro.Controller
         {
             try
             {
-                produto = new Produto(Int32.Parse(telaPrincipal.getTxtId()), // vazio -> catch
+                produto = new Produto(Int32.Parse(telaPrincipal.getTxtId()),    // vazio -> catch
                                       telaPrincipal.getTxtNome(),
-                                      Double.Parse(telaPrincipal.getTxtValor())); // vazio -> catch
+                                      Double.Parse(telaPrincipal.getTxtValor()));   // vazio -> catch
 
                 if (produto.getNome() == String.Empty){
 
@@ -79,9 +82,9 @@ namespace ProjetoCadastro.Controller
                 }
                 else{
                     if (MessageBox.Show("Tem certeza que deseja alterar as informações do produto?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes){
-                        
-                        dao = new ProdutoDAO();
-                        exibirResultadoDaOperacaoAtualizar(dao.atualizarProduto(produto));
+
+                        modelo = new Modelo();
+                        exibirResultadoDaOperacaoAtualizar(modelo.atualizarProduto(produto));
                     }
                 }
             }
@@ -90,19 +93,25 @@ namespace ProjetoCadastro.Controller
             }
         }
 
+        public void pesquisarTodosOsProdutos()
+        {
+            modelo = new Modelo();
+            telaPrincipal.getDtGrid().DataSource = modelo.pesquisarTodosOsProdutos();
+        }
+
         public void pesquisarProduto()
         {
-            if (telaPrincipal.getComboBox().SelectedIndex.Equals(-1))
+            switch (telaPrincipal.getComboBox().SelectedIndex)
             {
-                MessageBox.Show("Escolha o tipo de filtro");
-            }
-            else if (telaPrincipal.getComboBox().SelectedIndex.Equals(0))
-            {
-                pesquisarProdutoPorId();
-            }
-            else if (telaPrincipal.getComboBox().SelectedIndex.Equals(1))
-            {
-                pesquisarProdutoPorNome();
+                case -1:
+                    MessageBox.Show("Escolha o tipo de filtro");
+                    break;
+                case 0:
+                    pesquisarProdutoPorId();
+                    break;
+                case 1:
+                    pesquisarProdutoPorNome();
+                    break;
             }
         }
 
@@ -112,9 +121,9 @@ namespace ProjetoCadastro.Controller
             {
                 produto = new Produto(Int32.Parse(telaPrincipal.getTxtPesquisar())); // vazio -> catch
 
-                dao = new ProdutoDAO();
-                telaPrincipal.getDtGrid().DataSource = dao.pesquisarProdutoPorIdRetornaTabela(produto);
-                exibirDadosDoProdutoNasCaixasTexto(dao.pesquisarPorIdRetornaProduto(produto));
+                modelo = new Modelo();
+                telaPrincipal.getDtGrid().DataSource = modelo.pesquisarPorIdRetornaTabela(produto);
+                exibirDadosDoProdutoNasCaixasTexto(modelo.pesquisarPorIdRetornaProduto(produto));
             }
             catch
             {
@@ -132,19 +141,14 @@ namespace ProjetoCadastro.Controller
                 MessageBox.Show("Insira o nome!");
             }
             else{
-                dao = new ProdutoDAO();
-                DataTable dt = dao.pesquisarProdutoPorNomeRetornaTabela(produto);
+                modelo = new Modelo();
+                DataTable dt = modelo.pesquisarPorNomeRetornaTabela(produto);
+                
                 telaPrincipal.getDtGrid().DataSource = dt;
                 exibirResultadoPesquisaPorNome(dt);
             }
         }
         
-        public void pesquisarTodosOsProdutos()
-        {
-            dao = new ProdutoDAO();
-            telaPrincipal.getDtGrid().DataSource = dao.pesquisarTodosOsProdutos();
-        }
-
 
 
         // METODOS QUE RECEBEM O RETORNO DA OPERAÇÃO CRUD, E VERIFICAM SE A OPERAÇÃO FOI REALIZADA;

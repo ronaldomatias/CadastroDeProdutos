@@ -93,6 +93,7 @@
   <ItemGroup>
     <Compile Include="Controller\Controlador.cs" />
     <Compile Include="Model\DAO\Conexao.cs" />
+    <Compile Include="Model\Modelo.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Model\DAO\ProdutoDAO.cs" />
     <Compile Include="View\TelaPrincipal.cs">

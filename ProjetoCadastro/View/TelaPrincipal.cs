@@ -55,11 +55,6 @@ namespace ProjetoCadastro
             controlador.pesquisarProduto();
         }
 
-        private void btnPesquisarNome_Click(object sender, EventArgs e)
-        {
-            controlador.pesquisarProdutoPorNome();
-        }
-
         private void btnMostrarProdutos_Click(object sender, EventArgs e)
         {
             controlador.pesquisarTodosOsProdutos();
